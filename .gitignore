@@ -1,7 +1,6 @@
 .DS_Store
 documentation
 node_modules
-/dist
 /docs/.vuepress/dist
 # local env files
 .env.local

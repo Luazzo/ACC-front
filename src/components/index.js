@@ -1,4 +1,5 @@
 import Alert from './Alert'
+import HeadImage from './HeadImage'
 import Checkbox from './Inputs/Checkbox.vue'
 import IconCheckbox from './Inputs/IconCheckbox.vue'
 import Radio from './Inputs/Radio.vue'
@@ -31,6 +32,7 @@ import InfoSection from './InfoSection'
 
 export {
   Alert,
+  HeadImage,
   Checkbox,
   IconCheckbox,
   Switch,
