@@ -36,6 +36,10 @@
       min-height: 60vh;
       max-height: 440px;
   }
+  &.page-header-medium{
+      min-height: 75vh;
+      max-height: 440px;
+  }
 
   &:before{
       background-color: rgba(0,0,0,.3);

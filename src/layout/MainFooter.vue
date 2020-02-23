@@ -33,6 +33,7 @@
                 <a href="https://github.com/cristijora" target="_blank">Cristi Jora</a> and
                 <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
             </div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         </div>
     </footer>
 </template>

@@ -15,7 +15,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <div class="info">
+                            <div class="info info-hover">
                                 <div class="icon icon-success icon-circle">
                                     <i class="now-ui-icons users_single-02"></i>
                                 </div>
@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="info">
+                            <div class="info info-hover">
                                 <div class="icon icon-info icon-circle">
                                     <i class="now-ui-icons business_briefcase-24"></i>
                                 </div>
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="info">
+                            <div class="info info-hover">
                                 <div class="icon icon-primary icon-circle">
                                     <i class="now-ui-icons media-2_sound-wave"></i>
                                 </div>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="info">
+                            <div class="info info-hover">
                                 <div class="icon icon-warning icon-circle">
                                     <i class="now-ui-icons objects_support-17"></i>
                                 </div>

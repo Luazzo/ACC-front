@@ -1,8 +1,10 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Components from "./pages/Components.vue";
+import Accueil from "./pages/Accueil.vue";
 import Presentation from "./pages/Presentation.vue";
 import MainNavbar from "./layout/MainNavbar.vue";
+import StarterNavbar from "./layout/StarterNavbar.vue";
 import MainFooter from "./layout/MainFooter.vue";
 import About from "./pages/example-pages/AboutUs.vue";
 import BlogPost from "./pages/example-pages/BlogPost.vue";
@@ -16,7 +18,6 @@ import ProductPage from "./pages/example-pages/ProductPage.vue";
 import ProfilePage from "./pages/example-pages/ProfilePage.vue";
 import SignUpPage from "./pages/example-pages/SignUpPage.vue";
 import Sections from "./pages/Sections.vue";
-import Accueil from "./pages/Accueil.vue";
 
 Vue.use(Router);
 
@@ -27,20 +28,18 @@ const router = new Router({
       redirect: "/accueil"
     },
     {
+      path: "/accueil",
+      name: "accueil",
+      components: {default: Accueil, header: StarterNavbar, footer: MainFooter},
+      props: {header: {colorOnScroll: 450}}
+    },
+    {
       path: "/components",
       name: "components",
       components: {default: Components, header: MainNavbar, footer: MainFooter},
       props: {
         footer: {backgroundColor: 'black'},
         header: {colorOnScroll: 65}
-      }
-    },
-    {
-      path: "/accueil",
-      name: "accueil",
-      components: {default: Accueil, header: MainNavbar, footer: MainFooter},
-      props: {
-        footer: {type: 'default'}
       }
     },
     {
