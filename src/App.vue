@@ -1,13 +1,20 @@
 <template>
     <div id="app">
-        <router-view name="header"/>
+        <StarterNavbar></StarterNavbar>
+
         <div>
             <router-view/>
         </div>
+
         <router-view name="footer"/>
     </div>
 </template>
 <script>
-  export default {}
+    import StarterNavbar from './layout/StarterNavbar';
+    export default {
+        components: {
+            StarterNavbar,
+        },
+    }
 </script>
 
