@@ -30,13 +30,13 @@
             <router-link class="nav-item nav-link" to="/contact">
                 Contact
             </router-link>
-            <template v-if="loggedIn">
+
+            <template v-if="loggedIn" >
                 <li class="nav-item nav-link" style="cursor: pointer;" @click.prevent="logoutUser">
-                    Deconnexion {{loggedIn}} XX
+                    Deconnexion
                 </li>
             </template>
             <template v-else>
-
                 <router-link class="nav-item nav-link" to="/register">
                     Inscription
                 </router-link>
@@ -54,10 +54,10 @@
     import { DropDown, NavbarToggleButton, Navbar, NavLink } from '@/components';
     import { Popover } from 'element-ui'
     import {mapMutations, mapGetters, mapState, mapActions} from "vuex";
-    import Vue from "vue";
+    import {eventBus} from "../eventBus.js"
 
     export default {
-        name: 'main-navbar',
+        name: 'starter-navbar',
         components: {
             DropDown,
             Navbar,
@@ -67,38 +67,79 @@
         },
         data(){
             return{
+
             }
         },
 
         computed:{
-            //...mapState(['token']),
-
-            /*token:{
-                get: function () {
-                    return (this.$store.state.token !== '')
-                },
+            ...mapState(['loggedIn', 'token']),
+            /*isLogged(){
+                return (localStorage.getItem('token') !== '')
             }*/
-
-            loggedIn() {
-                console.log('StarterNavbar ', this.$store.state.token )
-                console.log(this.$store.state.token !== '' ) //true
-                return (this.$store.state.token !== '')
-            }
         },
 
         methods:{
             ...mapActions(['logoutUser']),
 
-            /*updateToken: async function (newValue) {
 
-                this.$nextTick(function () {
-                    this.$store.state.token = newValue
+            /* loggedIn() {
+                 console.log('StarterNavbar ', this.$store.state.token )
+                 console.log(this.$store.state.token !== '' ) //true
+                 if(this.$store.state.token !== ''){
+                     this.bbb = true
+                     console.log(this.bbb)
+                     return this.bbb
+                 }else{
+                     return this.bbb = false
+                 }
+             }
+
+             updateToken: async function (newValue) {
+
+                 this.$nextTick(function () {
+                     this.$store.state.token = newValue
+                 })
+             },*/
+            /*logoutUser() {
+                axios.post("http://127.0.0.1:8000/api/auth/logout", {
+                    'token': JSON.parse(localStorage.getItem('token'))
                 })
-            },*/
+                    .then(response => {
+                        if (response.data.message) {
+
+                            console.log(response.data.message)
+
+                            localStorage.setItem('token', '')
+
+                           // this.isLogged.set(false)// error
+
+                            console.log("isLogged : " + this.isLogged)
+
+                            router.push({name: 'login'})
+
+
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error.response);
+                    });
+            }*/
         },
 
+
         mounted() {
-            console.log("token : " + this.$store.state.token )
+            console.log("token : " +  this.token)
+            console.log("loggedIn : " +  this.loggedIn)
+
+            //console.log("token : " + localStorage.getItem('token') )
+
+            /*eventBus.$on("changeLoggedIn",newValue => {
+                console.log("eventBus ",newValue)
+                // this.isLogged.set(newValue) // error
+                console.log("isLogged : " + this.isLogged)
+            })*/
+            //  console.log("loggedIn : " + this.$store.state.loggedIn )
+
             // Vue.nextTick(callback)
 
             /* this.updateToken(this.token)

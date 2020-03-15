@@ -19,14 +19,18 @@ export const store = new VueX.Store({
     getters:{
         user : state =>{ return state.user },
         token : state =>{ return state.token },
+        loggedIn : state =>{ return state.loggedIn },
     },
 
     mutations:{
         SET_USER:(state,newValue)=>{
-            state.user = newValue
+            return state.user = newValue
         },
         SET_TOKEN:(state,newValue)=>{
-            state.token = newValue
+            return state.token = newValue
+        },
+        SET_LOGGEDIN:(state, newValue)=>{
+            return state.loggedIn = newValue
         },
     },
 
@@ -37,15 +41,14 @@ export const store = new VueX.Store({
             axios.post("http://127.0.0.1:8000/api/auth/login", payload)
                 .then(response => {
 
-                    //Vue.set(state, "token", JSON.stringify(response.data.accessToken))
                     commit('SET_TOKEN', JSON.stringify(response.data.accessToken))
 
+                    commit('SET_LOGGEDIN', true)
+
+                    console.log(state.token)
+                    console.log(state.loggedIn)
+
                     router.push({name:'accueil'})
-
-
-                    /*Vue.nextTick(function () {
-                      state.token.textContent === JSON.stringify(response.data.accessToken)
-                    })*/
 
                 })
                 .catch(error => {
@@ -66,6 +69,8 @@ export const store = new VueX.Store({
                         router.push({name:'login'})
 
                         commit('SET_TOKEN', '')
+
+                        commit('SET_LOGGEDIN', false)
 
 
                     }

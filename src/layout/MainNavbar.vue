@@ -31,6 +31,18 @@
                 Contact
             </router-link>
 
+            <li v-show="loggedIn" class="nav-item nav-link" style="cursor: pointer;" @click.prevent="logoutUser">
+                Deconnexion
+            </li>
+            <router-link v-show="!loggedIn" class="nav-item nav-link" to="/register">
+                Inscription
+            </router-link>
+
+            <router-link v-show="!loggedIn" class="nav-item nav-link" to="/login">
+                Connexion
+            </router-link>
+
+
             <!--   <tabs slot="raw-content" tab-content-classes="tab-content-padding text-center">
                 <tab-pane>
                     <template slot="label">
@@ -112,6 +124,8 @@
 <script>
     import { DropDown, NavbarToggleButton, Navbar, NavLink, TabPane, Tabs} from '../components';
     import { Popover } from 'element-ui'
+    import {mapMutations, mapGetters, mapState, mapActions} from "vuex";
+
     export default {
         name: 'main-navbar',
         props: {
@@ -126,7 +140,87 @@
             NavbarToggleButton,
             NavLink,
             [Popover.name]: Popover
+        },
+
+        computed:{
+            ...mapState(['loggedIn', 'token']),
+            /*isLogged(){
+                return (localStorage.getItem('token') !== '')
+            }*/
+        },
+
+        methods:{
+            ...mapActions(['logoutUser']),
+
+
+            /* loggedIn() {
+                 console.log('StarterNavbar ', this.$store.state.token )
+                 console.log(this.$store.state.token !== '' ) //true
+                 if(this.$store.state.token !== ''){
+                     this.bbb = true
+                     console.log(this.bbb)
+                     return this.bbb
+                 }else{
+                     return this.bbb = false
+                 }
+             }
+
+             updateToken: async function (newValue) {
+
+                 this.$nextTick(function () {
+                     this.$store.state.token = newValue
+                 })
+             },*/
+            /*logoutUser() {
+                axios.post("http://127.0.0.1:8000/api/auth/logout", {
+                    'token': JSON.parse(localStorage.getItem('token'))
+                })
+                    .then(response => {
+                        if (response.data.message) {
+
+                            console.log(response.data.message)
+
+                            localStorage.setItem('token', '')
+
+                           // this.isLogged.set(false)// error
+
+                            console.log("isLogged : " + this.isLogged)
+
+                            router.push({name: 'login'})
+
+
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error(error.response);
+                    });
+            }*/
+        },
+
+
+        mounted() {
+            console.log("token : " +  this.token)
+            console.log("isLogged : " +  this.loggedIn)
+
+            //console.log("token : " + localStorage.getItem('token') )
+
+            /*eventBus.$on("changeLoggedIn",newValue => {
+                console.log("eventBus ",newValue)
+                // this.isLogged.set(newValue) // error
+                console.log("isLogged : " + this.isLogged)
+            })*/
+            //  console.log("loggedIn : " + this.$store.state.loggedIn )
+
+            // Vue.nextTick(callback)
+
+            /* this.updateToken(this.token)
+
+            Vue.nextTick(function () {
+                console.log(this.$store.state.token !== '' )
+                return (this.$store.state.token !== '')
+            })*/
         }
+
     }
 </script>
 

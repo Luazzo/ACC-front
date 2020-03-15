@@ -1,20 +1,32 @@
 <template>
-    <div id="app">
-        <StarterNavbar></StarterNavbar>
+  <div id="app">
+    <StarterNavbar></StarterNavbar>
 
-        <div>
-            <router-view/>
-        </div>
+    <router-view/>
 
-        <router-view name="footer"/>
-    </div>
+    <MainFooter></MainFooter>
+  </div>
 </template>
+
 <script>
-    import StarterNavbar from './layout/StarterNavbar';
-    export default {
-        components: {
-            StarterNavbar,
-        },
-    }
+
+  import StarterNavbar from './layout/StarterNavbar';
+  import MainFooter from './layout/MainFooter';
+  export default {
+    components: {
+      StarterNavbar,
+      MainFooter
+    },
+  }
 </script>
 
+<style>
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+</style>

@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Accueil from "./pages/Accueil.vue";
-import StarterNavbar from "./layout/StarterNavbar.vue"
+import MainNavbar from "./layout/MainNavbar.vue"
 import MainFooter from "./layout/MainFooter.vue"
 import Register from './pages/SignUpPage'
 import LoginPage from './pages/LoginPage'
@@ -21,13 +21,13 @@ const router = new Router({
     {
       path: "/accueil",
       name: "accueil",
-      components: {default: Accueil,  footer: MainFooter},
+      components: {default: Accueil},
       props: {header: {colorOnScroll: 450}}
     },
     {
       path: "/login",
       name: "login",
-      components: {default: LoginPage, footer: MainFooter},
+      components: {default: LoginPage},
       props: {header: {colorOnScroll: 450}},
       meta: {
         auth: false
@@ -45,13 +45,13 @@ const router = new Router({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: {default: Dashboard, header: StarterNavbar, footer: MainFooter},
+      component: {default: Dashboard, header: MainNavbar, footer: MainFooter},
       meta: {
         auth: true
       }
     }
   ],
-  scrollBehavior: (to, from, savedPosition) => {
+  scrollBehavior: (to) => {
     if (to.hash) {
       return {selector: to.hash}
     } else {

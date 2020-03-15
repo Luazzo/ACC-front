@@ -105,15 +105,12 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 </template>
+
 <script>
     import { Button, HeadImage,InfoSection, FormGroupInput } from '../components';
-    import Vue from "vue";
+    import {mapState, mapActions, mapGetters, mapMutations} from "vuex"
 
     export default {
         name: 'accueil',
@@ -133,7 +130,12 @@
                 },
             }
         },
+        computed:{
+            ...mapState(["token","loggedIn"])
+        },
         mounted() {
+            console.log('token',this.token)
+            console.log('loggedIn', this.loggedIn)
             //console.log(this.$localStorage.token)
         }
     }
