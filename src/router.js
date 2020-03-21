@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Accueil from "./pages/Accueil.vue";
+import Contact from "./pages/ContactUs.vue";
 import MainNavbar from "./layout/MainNavbar.vue"
 import MainFooter from "./layout/MainFooter.vue"
 import Register from './pages/SignUpPage'
@@ -22,6 +23,12 @@ const router = new Router({
       path: "/accueil",
       name: "accueil",
       components: {default: Accueil},
+      props: {header: {colorOnScroll: 450}}
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      components: {default: Contact},
       props: {header: {colorOnScroll: 450}}
     },
     {
